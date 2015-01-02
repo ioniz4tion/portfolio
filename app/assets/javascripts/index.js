@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 	setTimeout(function() {
 	  $('.loader').fadeOut().empty();
-	}, 24500);
+	}, 500);
 
 	headerSize();
 
