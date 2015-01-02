@@ -1,4 +1,5 @@
 @import 'imports.css.scss';
+@import 'animations';
 
 body {
 	display: block;
@@ -15,10 +16,11 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  perspective: 2000px;
-  transform-style: preserve-3d;
   overflow: hidden;
   z-index: 9999;
+
+  @include perspective(2000px);
+  @include transform-style(preserve-3d);
 
   > div {
     position: relative;
@@ -44,15 +46,17 @@ body {
 
   .top {
     bottom: 50%;
-    -webkit-animation: slideUp .5s 24s ease-in;
-    -webkit-animation-fill-mode: forwards;
+
+    @include animation-single(slideUp .5s 24s ease-in);
+    @include animation-fill-mode(forwards);
   }
 
   .bottom {
     bottom: 0%;
-    transform: rotateX(180deg) rotateY(180deg);
-    -webkit-animation: slideDown .5s 24s ease-in;
-    -webkit-animation-fill-mode: forwards;
+
+    @include transform(rotateX(180deg) rotateY(180deg));
+    @include animation-single(slideDown .5s 24s ease-in);
+    @include animation-fill-mode(forwards);
   }
 
   .left,
@@ -93,8 +97,9 @@ body {
 
   .left {
     left: 0;
-    -webkit-animation: l-r-width .5s linear;
-    -webkit-animation-fill-mode: forwards;
+
+    @include animation-single(l-r-width .5s linear);
+    @include animation-fill-mode(forwards);
   }
 
   .angle-left {
@@ -107,9 +112,10 @@ body {
     .bar {
       bottom: -64px;
       left: -100px;
-      transform: rotate(300deg);
-      -webkit-animation: al-translate .5s .5s linear;
-      -webkit-animation-fill-mode: forwards;
+      
+      @include transform(rotate($al-rotate));
+      @include animation-single(al-translate .5s .5s linear);
+      @include animation-fill-mode(forwards);
     }
   }
 
@@ -117,8 +123,9 @@ body {
     bottom: 0;
     left: calc(50% - 90px);
     height: 158px;
-    -webkit-animation: middle-width .5s 1s linear;
-    -webkit-animation-fill-mode: forwards;
+
+    @include animation-single(middle-width .5s 1s linear);
+    @include animation-fill-mode(forwards);
   }
 
   .angle-right {
@@ -131,16 +138,18 @@ body {
     .bar {
       bottom: 172px;
       right: 36px;
-      transform: rotate(-120deg);
-      -webkit-animation: ar-translate .5s 1.5s linear;
-      -webkit-animation-fill-mode: forwards;
+      
+      @include transform(rotate($ar-rotate));
+      @include animation-single(ar-translate .5s 1.5s linear);
+      @include animation-fill-mode(forwards);
     }
   }
 
   .right {
     left: calc(50% + 150px);
-    -webkit-animation: l-r-width .5s 2s linear;
-    -webkit-animation-fill-mode: forwards;
+
+    @include animation-single(l-r-width .5s 2s linear);
+    @include animation-fill-mode(forwards);
   }
 }
 
@@ -152,19 +161,18 @@ body {
   border: 10px solid $grey2;
   opacity: 0;
   z-index: 1;
-  -webkit-animation: circle-zoom 1s 3s ease-in-out, circle-zoom 1s 22s reverse ease-in-out;
-  -webkit-animation-fill-mode: forwards;
 
+  @include animation-double(circle-zoom 1s 3s ease-in-out, circle-zoom 1s 22s reverse ease-in-out);
+  @include animation-fill-mode(forwards);
   @include xy-center;
 }
 
 .atom {
-  -webkit-animation: rotate 9s linear infinite;
+  @include animation-single(rotate 9s linear infinite);
 }
 
 .loader .atom {
-  -webkit-animation-delay: 12s;
-
+  @include animation-delay(12s);
   @include xy-center;
 }
 
@@ -184,8 +192,9 @@ body {
   width: $loader-nucleus-dims;
   height: $loader-nucleus-dims;
   opacity: 0;
-  -webkit-animation: show 1s 5s ease-in-out, pulse 3s 6s linear infinite, show 1s 21s reverse ease-in-out;
-  -webkit-animation-fill-mode: forwards;
+
+  @include animation-triple(show 1s 5s ease-in-out, pulse 3s 6s linear infinite, show 1s 21s reverse ease-in-out);
+  @include animation-fill-mode(forwards);
 }
 
 .orbital {
@@ -197,8 +206,9 @@ body {
   border: solid #777;
   border-radius: 50%;
   z-index: -1;
-  perspective: 2000px;
-  transform-style: preserve-3d;
+
+  @include perspective(2000px);
+  @include transform-style(preserve-3d);
 }
 
 .loader .ellipse {
@@ -208,33 +218,33 @@ body {
 }
 
 .ellipse.cyan {
-	transform: rotate($cyan-rotate);
+	@include transform(rotate($cyan-rotate));
 }
 
 .loader .ellipse.cyan {
-  transform: rotate($cyan-rotate) rotateX(90deg);
-  -webkit-animation: ellipse-cyan .5s 8s ease-in-out, ellipse-cyan .5s 20s reverse ease-in-out;
-  -webkit-animation-fill-mode: forwards;
+  @include transform(rotate($cyan-rotate) rotateX($ellipse-rotateX));
+  @include animation-double(ellipse-cyan .5s 8s ease-in-out, ellipse-cyan .5s 20s reverse ease-in-out);
+  @include animation-fill-mode(forwards);
 }
 
 .ellipse.magenta {
-	transform: rotate($magenta-rotate);
+	@include transform(rotate($magenta-rotate));
 }
 
 .loader .ellipse.magenta {
-  transform: rotate($magenta-rotate) rotateX(90deg);
-  -webkit-animation: ellipse-magenta .5s 8.5s ease-in-out, ellipse-magenta .5s 20.25s reverse ease-in-out;
-  -webkit-animation-fill-mode: forwards;
+  @include transform(rotate($magenta-rotate) rotateX($ellipse-rotateX));
+  @include animation-double(ellipse-magenta .5s 8.5s ease-in-out, ellipse-magenta .5s 20.25s reverse ease-in-out);
+  @include animation-fill-mode(forwards);
 }
 
 .ellipse.yellow {
-	transform: rotate($yellow-rotate);
+	@include transform(rotate($yellow-rotate));
 }
 
 .loader .ellipse.yellow {
-  transform: rotate($yellow-rotate) rotateX(90deg);
-  -webkit-animation: ellipse-yellow .5s 9s ease-in-out, ellipse-yellow .5s 20.5s reverse ease-in-out;
-  -webkit-animation-fill-mode: forwards;
+  @include transform(rotate($yellow-rotate) rotateX($ellipse-rotateX));
+  @include animation-double(ellipse-yellow .5s 9s ease-in-out, ellipse-yellow .5s 20.5s reverse ease-in-out);
+  @include animation-fill-mode(forwards);
 }
 
 .moveX {
@@ -243,7 +253,8 @@ body {
   height: 1%;
   top: 50%;
   left: -4.167%;
-  -webkit-animation: mX 3s ease-in-out infinite;
+
+  @include animation-single(mX 3s ease-in-out infinite);
 }
 
 .moveY {
@@ -251,12 +262,13 @@ body {
   width: 125%;
   height: 2500%;
   top: -1250%;
-  -webkit-animation: mO 3s linear infinite;
+
+  @include animation-single(mO 3s linear infinite);
 }
 
 .loader .moveX,
 .loader .moveY {
-  -webkit-animation-delay: 12s;
+  @include animation-delay(12s);
 }
 
 .electron {  
@@ -270,40 +282,42 @@ body {
 }
 
 .ellipse.cyan .electron {
-  background: #0ff;
+  background: $cyan;
 }
 
 .loader .ellipse.cyan .electron {
   opacity: 0;
-  -webkit-animation: show .5s 11s;
-  -webkit-animation-fill-mode: forwards;
+
+  @include animation-single(show .5s 11s);
+  @include animation-fill-mode(forwards);
 }
 
 .ellipse.magenta .electron {
-  background: #f0f;
+  background: $magenta;
 }
 
 .loader .ellipse.magenta .electron {
   opacity: 0;
-  -webkit-animation: show .5s 11.25s;
-  -webkit-animation-fill-mode: forwards;
+
+  @include animation-single(show .5s 11.25s);
+  @include animation-fill-mode(forwards);
 }
 
 .ellipse.yellow .electron {
-  background: #ff0;
+  background: $yellow;
 }
 
 .loader .ellipse.yellow .electron {
   opacity: 0;
-  -webkit-animation: show .5s 11.5s;
-  -webkit-animation-fill-mode: forwards;
+
+  @include animation-single(show .5s 11.5s);
+  @include animation-fill-mode(forwards);
 }
 
 .enter {
   position: absolute;
   bottom: 100%;
   left: 50%;
-  transform: translateX(-50%) rotateX(180deg) rotateY(180deg);
   background: transparent;
   border: 2px solid #777;
   color: #777;
@@ -312,7 +326,9 @@ body {
   padding: 17px 20px;
   text-transform: uppercase;
   font-weight: bold;
-  transition: all 180ms linear;
+
+  @include transform(translateX(-50%) rotateX(180deg) rotateY(180deg));
+  @include transition(all 180ms linear);
 }
 
 .enter:hover {
@@ -323,7 +339,7 @@ body {
 
 .enter-show {
   -webkit-animation: button-hop 1s 14s ease-in-out;
-  -webkit-animation-fill-mode: forwards;
+  @include animation-fill-mode(forwards);
 }
 
 header {
@@ -354,7 +370,8 @@ header .atom {
   position: absolute;
   top: 45%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
+  
+  @include transform(translate(-50%, -50%));
 }
 
 header .nucleus {

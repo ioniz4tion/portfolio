@@ -20,6 +20,14 @@
 	transform:         $transform;
 }
 
+@mixin transform-style($style) {
+	-ms-transform-style:     $style;
+	-moz-transform-style:    $style;
+	-webkit-transform-style: $style;
+	-o-transform-style:      $style;
+	transform-style:         $style;
+}
+
 @mixin backface-visibility($visibility) {
 	-ms-backface-visibility:     $visibility;
 	-moz-backface-visibility:    $visibility;
@@ -150,4 +158,44 @@
 	-moz-transform-origin: $origin;
 	-ms-transform-origin: $origin;
 	transform-origin: $origin;
+}
+
+@mixin animation-single($animation) {
+	    -ms-animation: $animation;
+	   -moz-animation: $animation;
+	-webkit-animation: $animation;
+	     -o-animation: $animation;
+	        animation: $animation;
+}
+
+@mixin animation-double($animation1, $animation2) {
+	    -ms-animation: $animation1, $animation2;
+	   -moz-animation: $animation1, $animation2;
+	-webkit-animation: $animation1, $animation2;
+	     -o-animation: $animation1, $animation2;
+	        animation: $animation1, $animation2;
+}
+
+@mixin animation-triple($animation1, $animation2, $animation3) {
+	    -ms-animation: $animation1, $animation2, $animation3;
+	   -moz-animation: $animation1, $animation2, $animation3;
+	-webkit-animation: $animation1, $animation2, $animation3;
+	     -o-animation: $animation1, $animation2, $animation3;
+	        animation: $animation1, $animation2, $animation3;
+}
+
+@mixin animation-delay($delay) {
+	    -ms-animation-delay: $delay;
+	   -moz-animation-delay: $delay;
+	-webkit-animation-delay: $delay;
+	     -o-animation-delay: $delay;
+	        animation-delay: $delay;
+}
+
+@mixin animation-fill-mode($mode) {
+	    -ms-animation-fill-mode: $mode;
+	   -moz-animation-fill-mode: $mode;
+	-webkit-animation-fill-mode: $mode;
+	     -o-animation-fill-mode: $mode;
+	        animation-fill-mode: $mode;
 }

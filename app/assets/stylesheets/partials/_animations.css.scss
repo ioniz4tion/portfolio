@@ -1,3 +1,5 @@
+@import 'imports.css.scss';
+
 @-webkit-keyframes scale {
   0% { @include transform(scale(1)); }
   100% { @include transform(scale(0.99)); }
@@ -42,17 +44,17 @@
 }
 
 @-webkit-keyframes ellipse-cyan {
-  0% { @include transform(rotateZ($cyan-rotate) rotateX(90deg)); }
+  0% { @include transform(rotateZ($cyan-rotate) rotateX($ellipse-rotateX)); }
   100% { @include transform(rotateZ($cyan-rotate) rotateX(0deg)); }
 }
 
 @-webkit-keyframes ellipse-magenta {
-  0% { @include transform(rotateZ($magenta-rotate) rotateX(90deg)); }
+  0% { @include transform(rotateZ($magenta-rotate) rotateX($ellipse-rotateX)); }
   100% { @include transform(rotateZ($magenta-rotate) rotateX(0deg)); }
 }
 
 @-webkit-keyframes ellipse-yellow {
-  0% { @include transform(rotateZ($yellow-rotate) rotateX(90deg)); }
+  0% { @include transform(rotateZ($yellow-rotate) rotateX($ellipse-rotateX)); }
   100% { @include transform(rotateZ($yellow-rotate) rotateX(0deg)); }
 }
 
@@ -89,8 +91,8 @@
 }
 
 @-webkit-keyframes al-translate {
-  0% { transform: rotate(300deg) translateX(0); }
-  100% { transform: rotate(300deg) translateX(137px); }
+  0% { @include transform(rotate($al-rotate) translateX(0)); }
+  100% { @include transform(rotate($al-rotate) translateX(137px)); }
 }
 
 @-webkit-keyframes middle-width {
@@ -99,8 +101,8 @@
 }
 
 @-webkit-keyframes ar-translate {
-  0% { transform: rotate(-120deg) translateX(0); }
-  100% { transform: rotate(-120deg) translateX(-136px); }
+  0% { @include transform(rotate($ar-rotate) translateX(0)); }
+  100% { @include transform(rotate($ar-rotate) translateX(-136px)); }
 }
 
 @-webkit-keyframes circle-zoom {
@@ -110,20 +112,20 @@
     opacity: 0;
   }
   80% {
-    width: 240px;
-    height: 240px;
+    width: $circle-bounce-dims;
+    height: $circle-bounce-dims;
     opacity: 1;
   }
   100% {
-    width: 200px;
-    height: 200px;
+    width: $circle-dims;
+    height: $circle-dims;
     opacity: 1;
   }
 }
 
 @-webkit-keyframes colors {
-  0% { background: #0ff; }
-  33% { background: #f0f; }
-  67% { background: #ff0; }
-  100% { background: #0ff; }
+  0% { background: $cyan; }
+  33% { background: $magenta; }
+  67% { background: $yellow; }
+  100% { background: $cyan; }
 }
