@@ -1,0 +1,153 @@
+@mixin box-sizing {
+	-webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@mixin transition($transition) {
+	-ms-transition:     $transition;
+	-moz-transition:    $transition;
+	-webkit-transition: $transition;
+	-o-transition:      $transition;
+	transition:         $transition;
+}
+
+@mixin transform($transform) {
+	-ms-transform:     $transform;
+	-moz-transform:    $transform;
+	-webkit-transform: $transform;
+	-o-transform:      $transform;
+	transform:         $transform;
+}
+
+@mixin backface-visibility($visibility) {
+	-ms-backface-visibility:     $visibility;
+	-moz-backface-visibility:    $visibility;
+	-webkit-backface-visibility: $visibility;
+	-o-backface-visibility:      $visibility;
+	backface-visibility:         $visibility;
+}
+
+@mixin perspective($value) {
+	-ms-perspective:     $value;
+	-moz-perspective:    $value;
+	-webkit-perspective: $value;
+	-o-perspective:      $value;
+	perspective:         $value;
+}
+
+@mixin flex {
+	    display: -ms-flex;
+	-ms-flex-direction: row;
+	-ms-flex-wrap: wrap;
+	-ms-justify-content: space-around;
+	-ms-align-content: space-around;
+
+	     display: -moz-flex;
+	-moz-flex-direction: row;
+	-moz-flex-wrap: wrap;
+	-moz-justify-content: space-around;
+	-moz-align-content: space-around;
+
+	        display: -webkit-flex;
+	-webkit-flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	-webkit-justify-content: space-around;
+	-webkit-align-content: space-around;
+
+	   display: -o-flex;
+	-o-flex-direction: row;
+	-o-flex-wrap: wrap;
+	-o-justify-content: space-around;
+	-o-align-content: space-around;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-content: space-around;
+}
+
+@mixin nav-flex {
+	display: -ms-flex;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: -o-flex;
+	display: flex;
+}
+
+@mixin linear-gradient-2($direction, $webkit-direction, $color1, $color2) {
+	background: -ms-linear-gradient($direction, $color1, $color2);
+	background: -moz-linear-gradient($direction, $color1, $color2);
+	background: -webkit-linear-gradient($webkit-direction, $color1, $color2);
+	background: -o-linear-gradient($direction, $color1, $color2);
+	background: linear-gradient(to $direction, $color1, $color2);
+}
+
+@mixin hr-fade($color1, $color2, $stop1, $stop2) {
+	background: -ms-linear-gradient(right, $color1, $color2 $stop1, $color2 $stop2, $color1);
+	background: -moz-linear-gradient(right, $color1, $color2 $stop1, $color2 $stop2, $color1);
+	background: -webkit-linear-gradient(left, $color1, $color2 $stop1, $color2 $stop2, $color1);
+	background: -o-linear-gradient(right, $color1, $color2 $stop1, $color2 $stop2, $color1);
+	background: linear-gradient(to right, $color1, $color2 $stop1, $color2 $stop2, $color1);
+}
+
+@mixin xy-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	@include transform(translate(-50%, -50%));
+}
+
+@mixin x-center {
+	position: absolute;
+	left: 50%;
+
+	@include transform(translateX(-50%));
+}
+
+@mixin y-center {
+	position: absolute;
+	top: 50%;
+
+	@include transform(translateY(-50%));
+}
+
+// Mixins for slideshow arrows
+@mixin arrow {
+	display: inline-block;
+	width: 20px;
+	height: 3px;
+	background: $dark-grey;
+	border-radius: 5px;
+
+	@include transition(all 0.3s ease);
+	// @include arrow-shadow(rgba(200, 200, 200, 0.7));
+}
+
+@mixin arrow-shadow($color) {
+	box-shadow: 0 0 10px $color;
+}
+
+@mixin hover-color($selector, $color, $fade-color) {
+	#{$selector}:hover {		
+		background-color: $color;
+		:after {
+			background-color: $fade-color;
+		}
+	}
+	#{$selector}-select {
+		background-color: $color !important;
+		:after {
+			background-color: $fade-color !important;
+		}		
+	}
+}
+
+@mixin transform-origin($origin) {
+	-webkit-transform-origin: $origin;
+	-moz-transform-origin: $origin;
+	-ms-transform-origin: $origin;
+	transform-origin: $origin;
+}

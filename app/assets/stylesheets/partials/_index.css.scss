@@ -1,0 +1,511 @@
+body {
+	display: block;
+	width: 100%;
+	height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica;
+  overflow: hidden;
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  perspective: 2000px;
+  transform-style: preserve-3d;
+  overflow: hidden;
+  z-index: 9999;
+
+  > div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.pattern {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .top,
+  .bottom {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: #292929;
+  }
+}
+
+.pattern .top {
+  bottom: 50%;
+  -webkit-animation: slideUp .5s 24s ease-in;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.pattern .bottom {
+  bottom: 0%;
+  transform: rotateX(180deg) rotateY(180deg);
+  -webkit-animation: slideDown .5s 24s ease-in;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.pattern .left {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  background: transparent;
+  border-top: 10px solid #1d1d1d;
+  -webkit-animation: l-r-width .5s linear;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.pattern .angle-left {
+  position: absolute;
+  bottom: 40px;
+  left: calc(50% - 153px);
+  width: 68px;
+  height: 118px;
+  overflow: hidden;
+}
+
+.pattern .angle-left .bar {
+  position: absolute;
+  bottom: -64px;
+  left: -100px;
+  width: 131px;
+  height: 10px;
+  background: #1d1d1d;
+  transform: rotate(300deg);
+  -webkit-animation: al-translate .5s .5s linear;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.pattern .middle {
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 90px);
+  height: 158px;
+  border-top: 10px solid #1d1d1d;
+  -webkit-animation: middle-width .5s 1s linear;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.pattern .angle-right {
+  position: absolute;
+  bottom: 40px;
+  right: calc(50% - 153px);
+  width: 68px;
+  height: 118px;
+  overflow: hidden;
+}
+
+.pattern .angle-right .bar {
+  position: absolute;
+  bottom: 172px;
+  right: 36px;
+  width: 131px;
+  height: 10px;
+  background: #1d1d1d;
+  transform: rotate(-120deg);
+  -webkit-animation: ar-translate .5s 1.5s linear;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.pattern .right {
+  position: absolute;
+  left: calc(50% + 150px);
+  bottom: 0;
+  height: 50px;
+  background: transparent;
+  border-top: 10px solid #1d1d1d;
+  -webkit-animation: l-r-width .5s 2s linear;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: transparent;
+  border: 10px solid #1d1d1d;
+  opacity: 0;
+  z-index: 1;
+  -webkit-animation: circle-zoom 1s 3s ease-in-out, circle-zoom 1s 22s reverse ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.atom {
+  -webkit-animation: rotate 9s linear infinite;
+}
+
+.loader .atom {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -webkit-animation-delay: 12s;
+}
+
+.atom > div {
+  position: relative;
+}
+
+.nucleus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #777;
+  box-shadow: 0 0 0 #000;
+  border-radius: 50%;
+}
+
+.loader .nucleus {
+  width: 25px;
+  height: 25px;
+  opacity: 0;
+  -webkit-animation: show 1s 5s ease-in-out, pulse 3s 6s linear infinite, show 1s 21s reverse ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.orbital {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.ellipse {
+  position: relative;
+  border: solid #777;
+  border-radius: 50%;
+  z-index: -1;
+  perspective: 2000px;
+  transform-style: preserve-3d;
+}
+
+.loader .ellipse {
+  width: 150px;
+  height: 50px;
+  border-width: 1px;
+}
+
+.ellipse.cyan {
+	transform: rotate(90deg);
+}
+
+.loader .ellipse.cyan {
+  transform: rotate(90deg) rotateX(90deg);
+  -webkit-animation: ellipse-cyan .5s 8s ease-in-out, ellipse-cyan .5s 20s reverse ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.ellipse.magenta {
+	transform: rotate(210deg);
+}
+
+.loader .ellipse.magenta {
+  transform: rotate(210deg) rotateX(90deg);
+  -webkit-animation: ellipse-magenta .5s 8.5s ease-in-out, ellipse-magenta .5s 20.25s reverse ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.ellipse.yellow {
+	transform: rotate(330deg);
+}
+
+.loader .ellipse.yellow {
+  transform: rotate(330deg) rotateX(90deg);
+  -webkit-animation: ellipse-yellow .5s 9s ease-in-out, ellipse-yellow .5s 20.5s reverse ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.moveX {
+  position: absolute;
+  width: 33.33%;
+  height: 1%;
+  top: 50%;
+  left: -4.167%;
+  -webkit-animation: mX 3s ease-in-out infinite;
+}
+
+.moveY {
+  position: absolute;
+  width: 125%;
+  height: 2500%;
+  top: -1250%;
+  -webkit-animation: mO 3s linear infinite;
+}
+
+.loader .moveX,
+.loader .moveY {
+  -webkit-animation-delay: 12s;
+}
+
+.electron {  
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: 5;
+}
+
+.ellipse.cyan .electron {
+  background: #0ff;
+}
+
+.loader .ellipse.cyan .electron {
+  opacity: 0;
+  -webkit-animation: show .5s 11s;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.ellipse.magenta .electron {
+  background: #f0f;
+}
+
+.loader .ellipse.magenta .electron {
+  opacity: 0;
+  -webkit-animation: show .5s 11.25s;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.ellipse.yellow .electron {
+  background: #ff0;
+}
+
+.loader .ellipse.yellow .electron {
+  opacity: 0;
+  -webkit-animation: show .5s 11.5s;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.enter {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) rotateX(180deg) rotateY(180deg);
+  background: transparent;
+  border: 2px solid #777;
+  color: #777;
+  outline: none;
+  box-shadow: none;
+  padding: 17px 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 180ms linear;
+}
+
+.enter:hover {
+  box-shadow: inset 0 0 0 50px #777;
+  color: #1d1d1d;
+  cursor: pointer;
+}
+
+.enter-show {
+  -webkit-animation: button-hop 1s 14s ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+}
+
+header {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url(/assets/footer_lodyas.png);
+}
+
+header:before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0;
+  z-index: 9999;
+  transition: opacity .5s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+header.active:before {
+  opacity: .3;
+}
+
+header .atom {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+}
+
+header .nucleus {
+  width: 50px;
+  height: 50px;
+  -webkit-animation: pulse 3s linear infinite;
+}
+
+header .ellipse {
+  width: 300px;
+  height: 100px;
+  border-width: 2px;
+}
+
+.main {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0 auto;
+  padding: 15px 25px;
+  max-width: 92.5%;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  color: #999;
+}
+
+h1 {
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 3.30159rem;
+  margin: 0.4127rem 0;
+  color: #f0f0f0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.65079rem;
+  margin: 0.27513rem 0 1.65079rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+a {
+  color: #fad300;
+  text-decoration: none;
+  transition: all .2s ease-in-out;
+}
+
+a:hover {
+  color: #8d8d8d;
+}
+
+.main span.nav__button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 1.75rem;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 45px;
+  border-radius: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  z-index: 9;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-touch-callout: none;
+}
+.main span.nav__button.open {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+nav {
+  position: fixed;
+  width: 224px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: rgba(10, 10, 13, 0.75);
+  padding: 28px 0;
+  z-index: 1;
+  transform: translateX(224px);
+  transition: transform 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+nav h3 {
+  padding: 0 28px;
+}
+
+nav a {
+  color: #e9e9e9;
+  display: block;
+  width: 100%;
+  padding: 10px 28px;
+  margin-bottom: 8px;
+}
+
+nav a:hover {
+  color: #aaaaaa;
+  background: #000;
+}
+
+[class^="licon-"] {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  font-style: normal;
+}
+[class^="licon-"]:before, [class^="licon-"]:after {
+  content: '';
+  pointer-events: none;
+}
+
+.licon-reorder {
+  width: 24px;
+  height: 2px;
+  background-color: #616161;
+  transform: translateY(1px);
+  transition: background-color 0.25s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.licon-reorder:before, .licon-reorder:after {
+  position: absolute;
+  background-color: #616161;
+  width: 24px;
+  height: 2px;
+  left: 0;
+  transform: translate3d(0, 0, 0);
+  transition: transform .25s, color .2s cubic-bezier(1, 0, 0.23, 1);
+}
+.licon-reorder:before {
+  top: -8px;
+}
+.licon-reorder:after {
+  bottom: -8px;
+}
+
+.open .licon-reorder {
+  background-color: transparent;
+}
+.open .licon-reorder:before, .open .licon-reorder:after {
+  background: #eee;
+}
+.open .licon-reorder:before {
+  /*transform: translateY(5px);*/
+  transform: rotate(-45deg);
+  top: 0;
+}
+.open .licon-reorder:after {
+  /*transform: translateY(-3px);*/
+  transform: rotate(45deg);
+  bottom: 0;
+}
+
+.active .navigation {
+  transform: translateX(0);
+}
