@@ -1,11 +1,11 @@
 @-webkit-keyframes scale {
-  0% { transform: scale(1); }
-  100% { transform: scale(0.99); }
+  0% { @include transform(scale(1)); }
+  100% { @include transform(scale(0.99)); }
 }
 
 @-webkit-keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% { @include transform(rotate(0deg)); }
+  100% { @include transform(rotate(360deg)); }
 }
 
 @-webkit-keyframes hide {
@@ -20,51 +20,51 @@
 
 @-webkit-keyframes pulse {
   0% {
-    background: #777;
+    background: $grey7;
     box-shadow: 0 0 0 #000;
   }
   25% {
-    background: #999;
-    box-shadow: 0 0 10px 2px #777;
+    background: $grey9;
+    box-shadow: 0 0 10px 2px $grey7;
   }
   50% {
-    background: #777;
+    background: $grey7;
     box-shadow: 0 0 0 #000;
   }
   75% {
-    background: #999;
-    box-shadow: 0 0 10px 2px #777;
+    background: $grey9;
+    box-shadow: 0 0 10px 2px $grey7;
   }
   100% {
-    background: #777;
+    background: $grey7;
     box-shadow: 0 0 0 #000;
   }
 }
 
 @-webkit-keyframes ellipse-cyan {
-  0% { transform: rotateZ(90deg) rotateX(90deg); }
-  100% { transform: rotateZ(90deg) rotateX(0deg); }
+  0% { @include transform(rotateZ($cyan-rotate) rotateX(90deg)); }
+  100% { @include transform(rotateZ($cyan-rotate) rotateX(0deg)); }
 }
 
 @-webkit-keyframes ellipse-magenta {
-  0% { transform: rotateZ(210deg) rotateX(90deg); }
-  100% { transform: rotateZ(210deg) rotateX(0deg); }
+  0% { @include transform(rotateZ($magenta-rotate) rotateX(90deg)); }
+  100% { @include transform(rotateZ($magenta-rotate) rotateX(0deg)); }
 }
 
 @-webkit-keyframes ellipse-yellow {
-  0% { transform: rotateZ(330deg) rotateX(90deg); }
-  100% { transform: rotateZ(330deg) rotateX(0deg); }
+  0% { @include transform(rotateZ($yellow-rotate) rotateX(90deg)); }
+  100% { @include transform(rotateZ($yellow-rotate) rotateX(0deg)); }
 }
 
 @-webkit-keyframes mX {
-  0% { -webkit-transform: translateX(0px); }
-  50% { -webkit-transform: translateX(200%); }
-  100% { -webkit-transform: translateX(0px); }
+  0% { @include transform(translateX(0px)); }
+  50% { @include transform(translateX(200%)); }
+  100% { @include transform(translateX(0px)); }
 }
 
 @-webkit-keyframes mO {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+  0% { @include transform(rotate(0deg)); }
+  100% { @include transform(rotate(360deg)); }
 }
 
 @-webkit-keyframes button-hop {
